@@ -1,0 +1,70 @@
+{
+  "algorithm": "K-Means with K-Means++ initialization",
+  "tested_k_values": [
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
+  "inertias": [
+    74816.37,
+    59743.68,
+    51712.6,
+    45856.99,
+    41654.91
+  ],
+  "silhouette_scores": [
+    0.2738,
+    0.2295,
+    0.2227,
+    0.2076,
+    0.2072
+  ],
+  "selected_k": 3,
+  "features_used": [
+    "annual_inc",
+    "loan_amount",
+    "dti",
+    "interest_rate"
+  ],
+  "cluster_profiles": [
+    {
+      "cluster_id": 0,
+      "persona_name": "Low-Risk Conservative Borrowers",
+      "count": 10661,
+      "pct_of_total": 42.6,
+      "avg_income": 62295.8,
+      "avg_loan": 10214.29,
+      "avg_dti": 13.3,
+      "avg_interest_rate": 11.28,
+      "default_rate_pct": 5.6
+    },
+    {
+      "cluster_id": 1,
+      "persona_name": "High-Leverage / Subprime Borrowers",
+      "count": 8702,
+      "pct_of_total": 34.8,
+      "avg_income": 53693.02,
+      "avg_loan": 13287.46,
+      "avg_dti": 25.79,
+      "avg_interest_rate": 15.65,
+      "default_rate_pct": 10.49
+    },
+    {
+      "cluster_id": 2,
+      "persona_name": "Prime High-Income Borrowers",
+      "count": 5637,
+      "pct_of_total": 22.5,
+      "avg_income": 123292.34,
+      "avg_loan": 25525.33,
+      "avg_dti": 15.63,
+      "avg_interest_rate": 13.34,
+      "default_rate_pct": 6.78
+    }
+  ],
+  "pca_variance_explained": [
+    0.3647,
+    0.3201
+  ]
+}

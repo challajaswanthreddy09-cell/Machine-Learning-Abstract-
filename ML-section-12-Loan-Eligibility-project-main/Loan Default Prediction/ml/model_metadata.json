@@ -1,0 +1,314 @@
+{
+  "model_name": "XGBoost",
+  "model_file": "loan_default_model.joblib",
+  "training_date": "2026-10-06T09:25:35.747233",
+  "dataset_name": "loan_final313.csv",
+  "target_column": "loan_condition_cat",
+  "target_classes": {
+    "0": "Good Loan (Non-Default)",
+    "1": "Bad Loan (Default)"
+  },
+  "features": {
+    "numerical": [
+      "loan_amount",
+      "emp_length_int",
+      "annual_inc",
+      "interest_rate",
+      "dti",
+      "installment"
+    ],
+    "categorical": [
+      "grade",
+      "home_ownership",
+      "term",
+      "purpose",
+      "application_type"
+    ],
+    "all_preprocessed_features": [
+      "loan_amount",
+      "emp_length_int",
+      "annual_inc",
+      "interest_rate",
+      "dti",
+      "installment",
+      "grade_A",
+      "grade_B",
+      "grade_C",
+      "grade_D",
+      "grade_E",
+      "grade_F",
+      "grade_G",
+      "home_ownership_MORTGAGE",
+      "home_ownership_OTHER",
+      "home_ownership_OWN",
+      "home_ownership_RENT",
+      "term_36 months",
+      "term_60 months",
+      "purpose_car",
+      "purpose_credit_card",
+      "purpose_debt_consolidation",
+      "purpose_educational",
+      "purpose_home_improvement",
+      "purpose_house",
+      "purpose_major_purchase",
+      "purpose_medical",
+      "purpose_moving",
+      "purpose_other",
+      "purpose_renewable_energy",
+      "purpose_small_business",
+      "purpose_vacation",
+      "purpose_wedding",
+      "application_type_INDIVIDUAL",
+      "application_type_JOINT"
+    ]
+  },
+  "categorical_options": {
+    "grade": [
+      "A",
+      "B",
+      "C",
+      "D",
+      "E",
+      "F",
+      "G"
+    ],
+    "home_ownership": [
+      "MORTGAGE",
+      "OTHER",
+      "OWN",
+      "RENT"
+    ],
+    "term": [
+      "36 months",
+      "60 months"
+    ],
+    "purpose": [
+      "car",
+      "credit_card",
+      "debt_consolidation",
+      "educational",
+      "home_improvement",
+      "house",
+      "major_purchase",
+      "medical",
+      "moving",
+      "other",
+      "renewable_energy",
+      "small_business",
+      "vacation",
+      "wedding"
+    ],
+    "application_type": [
+      "INDIVIDUAL",
+      "JOINT"
+    ]
+  },
+  "numerical_stats": {
+    "loan_amount": {
+      "min": 500.0,
+      "max": 35000.0,
+      "median": 13000.0,
+      "mean": 14755.26,
+      "std": 8435.46
+    },
+    "emp_length_int": {
+      "min": 0.5,
+      "max": 10.0,
+      "median": 6.05,
+      "mean": 6.05,
+      "std": 3.51
+    },
+    "annual_inc": {
+      "min": 0.0,
+      "max": 9500000.0,
+      "median": 65000.0,
+      "mean": 75027.59,
+      "std": 64698.15
+    },
+    "interest_rate": {
+      "min": 5.32,
+      "max": 28.99,
+      "median": 12.99,
+      "mean": 13.25,
+      "std": 4.38
+    },
+    "dti": {
+      "min": 0.0,
+      "max": 100.0,
+      "median": 17.65,
+      "mean": 18.13,
+      "std": 8.31
+    },
+    "installment": {
+      "min": 15.67,
+      "max": 1445.46,
+      "median": 382.55,
+      "mean": 436.72,
+      "std": 244.19
+    }
+  },
+  "evaluation_metrics": {
+    "Logistic Regression": {
+      "accuracy": 0.6474,
+      "precision": 0.1335,
+      "recall": 0.6627,
+      "f1_score": 0.2222,
+      "roc_auc": 0.7051,
+      "confusion_matrix": [
+        [
+          17911,
+          9809
+        ],
+        [
+          769,
+          1511
+        ]
+      ],
+      "fit_time_seconds": 1.31,
+      "description": "Baseline linear classifier with class-balanced weighting and L2 regularization"
+    },
+    "Decision Tree": {
+      "accuracy": 0.64,
+      "precision": 0.1345,
+      "recall": 0.6877,
+      "f1_score": 0.225,
+      "roc_auc": 0.7191,
+      "confusion_matrix": [
+        [
+          17632,
+          10088
+        ],
+        [
+          712,
+          1568
+        ]
+      ],
+      "fit_time_seconds": 1.25,
+      "description": "Single tree using Gini impurity, max depth=8 to avoid overfitting"
+    },
+    "Random Forest": {
+      "accuracy": 0.6331,
+      "precision": 0.133,
+      "recall": 0.6934,
+      "f1_score": 0.2231,
+      "roc_auc": 0.7127,
+      "confusion_matrix": [
+        [
+          17411,
+          10309
+        ],
+        [
+          699,
+          1581
+        ]
+      ],
+      "fit_time_seconds": 2.32,
+      "description": "Bagging ensemble of 100 decision trees with feature subsampling"
+    },
+    "XGBoost": {
+      "accuracy": 0.6397,
+      "precision": 0.1367,
+      "recall": 0.7039,
+      "f1_score": 0.229,
+      "roc_auc": 0.7299,
+      "confusion_matrix": [
+        [
+          17587,
+          10133
+        ],
+        [
+          675,
+          1605
+        ]
+      ],
+      "fit_time_seconds": 1.18,
+      "description": "Gradient boosted decision trees optimized with scale_pos_weight"
+    }
+  },
+  "best_metrics": {
+    "accuracy": 0.6397,
+    "precision": 0.1367,
+    "recall": 0.7039,
+    "f1_score": 0.229,
+    "roc_auc": 0.7299,
+    "confusion_matrix": [
+      [
+        17587,
+        10133
+      ],
+      [
+        675,
+        1605
+      ]
+    ],
+    "fit_time_seconds": 1.18,
+    "description": "Gradient boosted decision trees optimized with scale_pos_weight"
+  },
+  "feature_importances": [
+    {
+      "feature": "interest_rate",
+      "importance": 0.15059
+    },
+    {
+      "feature": "grade_C",
+      "importance": 0.09452
+    },
+    {
+      "feature": "grade_A",
+      "importance": 0.0695
+    },
+    {
+      "feature": "grade_B",
+      "importance": 0.06316
+    },
+    {
+      "feature": "term_36 months",
+      "importance": 0.0502
+    },
+    {
+      "feature": "grade_E",
+      "importance": 0.04314
+    },
+    {
+      "feature": "purpose_small_business",
+      "importance": 0.04212
+    },
+    {
+      "feature": "grade_D",
+      "importance": 0.04198
+    },
+    {
+      "feature": "home_ownership_RENT",
+      "importance": 0.03687
+    },
+    {
+      "feature": "home_ownership_MORTGAGE",
+      "importance": 0.03663
+    },
+    {
+      "feature": "annual_inc",
+      "importance": 0.02611
+    },
+    {
+      "feature": "purpose_credit_card",
+      "importance": 0.02544
+    },
+    {
+      "feature": "purpose_moving",
+      "importance": 0.02237
+    },
+    {
+      "feature": "dti",
+      "importance": 0.02139
+    },
+    {
+      "feature": "installment",
+      "importance": 0.02085
+    }
+  ],
+  "risk_thresholds": {
+    "low_risk_threshold": 0.35,
+    "medium_risk_threshold": 0.6,
+    "description": "Default probability < 0.35 is Low Risk (Approved), 0.35-0.60 is Medium Risk (Conditional Approval), >= 0.60 is High Risk (Declined)."
+  }
+}
